@@ -1,25 +1,29 @@
-let a1, a2, b1, b2, c1, c2, wx, wy, w, x, y;
+const button = document.getElementById("button");
+button.addEventListener("click", calculate);
 
-a1 = prompt("Podaj a1");
-b1 = prompt("Podaj b1");
-c1 = prompt("Podaj c1");
-a2 = prompt("Podaj a2");
-b2 = prompt("Podaj b2");
-c2 = prompt("Podaj c2");
+function calculate() {
+  const a1 = document.getElementById("a1").valueAsNumber;
+  const b1 = document.getElementById("b1").valueAsNumber;
+  const c1 = document.getElementById("c1").valueAsNumber;
+  const a2 = document.getElementById("a2").valueAsNumber;
+  const b2 = document.getElementById("b2").valueAsNumber;
+  const c2 = document.getElementById("c2").valueAsNumber;
 
-w = a1 * b2 - a2 * b1;
-wx = c1 * b2 - c2 * b1;
-wy = a1 * c2 - a2 * c1;
+  const w = a1 * b2 - a2 * b1;
+  const wx = c1 * b2 - c2 * b1;
+  const wy = a1 * c2 - a2 * c1;
 
-if (w != 0) {
-  x = wx / w;
-  y = wy / w;
-  document.write("x = " + x + "<br>");
-  document.write("y = " + y + "<br>");
-} else {
-  if (wx == 0 && wy == 0) {
-    document.write("Uklad ma nieskonczenie wiele rozwiazan");
+  const wynik = document.getElementById("wynik");
+
+  if (w != 0) {
+    const x = wx / w;
+    const y = wy / w;
+    wynik.innerHTML = `x = ${x}, y = ${y}`;
   } else {
-    document.write("Uklad jest sprzeczny");
+    if (wx == 0 && wy == 0) {
+      wynik.textContent = "Uklad jest nieoznaczony";
+    } else {
+      wynik.textContent = "Uklad jest sprzeczny";
+    }
   }
 }
